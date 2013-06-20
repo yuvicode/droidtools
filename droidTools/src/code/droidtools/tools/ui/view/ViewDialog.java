@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.view.View;
 
 
-public class ViewAlertDialog extends YesNoAlertDialog implements ComplexAlertDialogService{
+public class ViewDialog extends YesNoDialog implements ComplexDialogService{
 
 	View view = null;
 	boolean isComplete = false;
@@ -38,8 +38,9 @@ public class ViewAlertDialog extends YesNoAlertDialog implements ComplexAlertDia
 				.setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,int id) {
 						if(handler!=null)
-							handler.onSecondSelection();
+							handler.onSecondSelection(view);
 						dialog.cancel();
+						
 					}
 				});
 			

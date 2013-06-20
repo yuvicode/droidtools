@@ -6,14 +6,14 @@ import android.content.DialogInterface;
 
 import com.google.inject.Inject;
 
-public class YesNoAlertDialog implements SimpleAlertDialogService{
+public class YesNoDialog implements SimpleDialogService{
 	
 	protected AlertDialog alertDialog = null;
-	protected TwoOptionsAlertHandler handler = null;
+	protected TwoOptionsDialogHandler handler = null;
 	protected String title = null,question= null;
 	
 	@Inject
-	public YesNoAlertDialog()
+	public YesNoDialog()
 	{
 	
 		
@@ -47,7 +47,7 @@ public class YesNoAlertDialog implements SimpleAlertDialogService{
 				.setNegativeButton("NO",new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,int id) {
 						if(handler!=null)
-							handler.onSecondSelection();
+							handler.onSecondSelection(null);
 						dialog.cancel();
 					}
 				});
@@ -65,7 +65,7 @@ public class YesNoAlertDialog implements SimpleAlertDialogService{
 	}
 
 	@Override
-	public void setHandler(TwoOptionsAlertHandler handler) {
+	public void setHandler(TwoOptionsDialogHandler handler) {
 		this.handler = handler;
 	}
 

@@ -6,7 +6,7 @@ import android.view.View;
  *Interface for Dialog that present an internal View.
  *
  */
-public interface ComplexAlertDialogService extends SimpleAlertDialogService{
+public interface ComplexDialogService extends SimpleDialogService{
 
 	/**
 	 * Set the Dialog internal View

@@ -6,7 +6,7 @@ import android.content.Context;
  * Basic interface for Dialog with "Title", "Message(question)" and 2 user options: "Yes"/"No" 
  *
  */
-public interface SimpleAlertDialogService {
+public interface SimpleDialogService {
 	
 	/**
 	 * This method actually created the dialog. should be used ONLY AFTER user set ALL parameters
@@ -28,7 +28,7 @@ public interface SimpleAlertDialogService {
 	 * Set the internal Dialog handler, for user selection
 	 * @param handler
 	 */
-	public void setHandler(TwoOptionsAlertHandler handler) ;
+	public void setHandler(TwoOptionsDialogHandler handler) ;
 	
 	/**
 	 * change the Buttons labels from default "ok" and "no" to some thing ...

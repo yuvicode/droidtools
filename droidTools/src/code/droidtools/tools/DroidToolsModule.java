@@ -2,10 +2,10 @@ package code.droidtools.tools;
 
 
 
-import code.droidtools.tools.ui.view.ComplexAlertDialogService;
-import code.droidtools.tools.ui.view.SimpleAlertDialogService;
-import code.droidtools.tools.ui.view.ViewAlertDialog;
-import code.droidtools.tools.ui.view.YesNoAlertDialog;
+import code.droidtools.tools.ui.view.ComplexDialogService;
+import code.droidtools.tools.ui.view.SimpleDialogService;
+import code.droidtools.tools.ui.view.ViewDialog;
+import code.droidtools.tools.ui.view.YesNoDialog;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
@@ -23,9 +23,9 @@ public class DroidToolsModule extends AbstractModule {
 	protected void configure() {
 	
 		// ui alert
-		bind(SimpleAlertDialogService.class).to(YesNoAlertDialog.class);
+		bind(SimpleDialogService.class).to(YesNoDialog.class);
 				// ui alert
-		bind(ComplexAlertDialogService.class).to(ViewAlertDialog.class);
+		bind(ComplexDialogService.class).to(ViewDialog.class);
 		
 		bind(ErrorHandler.class).to(SimpleErrorHandler.class);
 
