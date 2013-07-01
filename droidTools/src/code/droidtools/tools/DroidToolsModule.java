@@ -27,9 +27,7 @@ public class DroidToolsModule extends AbstractModule {
 				// ui alert
 		bind(ComplexDialogService.class).to(ViewDialog.class);
 		
-		bind(ErrorHandler.class).to(SimpleErrorHandler.class);
-
-		
+	
 		install(new FactoryModuleBuilder()
 	     .implement(LocalJsonFileAsyncReaderService.class,ReadLocalJsonFile.class)
 	     .implement(LocalTextFileAsyncWriterService.class,SaveLocalTextFile.class)

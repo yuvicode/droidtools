@@ -11,17 +11,14 @@ public class LocalBitmapReader extends AsyncTask<String, Integer, Bitmap> implem
 
 	
 	private AsyncHandler<Bitmap> handler;
-	private ErrorHandler error;
 	private boolean hasError = false;
 	int height, width;
 
 	@AssistedInject
-	public LocalBitmapReader(@Assisted AsyncHandler<Bitmap> handler, @Assisted ErrorHandler error,  @Assisted("height") int height, @Assisted("width") int width) {
+	public LocalBitmapReader(@Assisted AsyncHandler<Bitmap> handler,   @Assisted("height") int height, @Assisted("width") int width) {
 		this.handler = handler;
 		this.height = height;
 		this.width = width;
-		this.error = error;
-
 	}
 
 	protected Bitmap doInBackground(String ...fileName) {
