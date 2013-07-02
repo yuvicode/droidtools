@@ -142,8 +142,11 @@ public class RestLoopjClient implements RemoteRestService {
 			Log.d(tag, e.getMessage());
 		}
 
-		if (entityToSave == null)
+		if (entityToSave == null){
 			mClbc.onError(ErrorCodes.ERR_WRONG_FORMAT);
+			return;
+		}
+			
 
 		remoteClient.put(mCtx, url, entityToSave,
 				"application/json; charset=UTF-8",
