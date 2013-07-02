@@ -12,8 +12,8 @@ import com.google.inject.assistedinject.FactoryModuleBuilder;
 
 
 /**
- * project Guice module. describes all object-interfaces relations.<br>
- * this should be used in any of the project activities before super.onCreate(savedInstanceState);
+ * Droidtools Guice module. describes all object-interfaces relations.<br>
+ * This should be used in any of the project activities before super.onCreate(savedInstanceState);
  * 
  * <br>USE with RoboGuice:  RoboGuice.setBaseApplicationInjector( getApplication(), RoboGuice.DEFAULT_STAGE, Modules.combine(RoboGuice.newDefaultRoboModule(getApplication()),new DroidToolsModule() )); 
  */
@@ -27,6 +27,8 @@ public class DroidToolsModule extends AbstractModule {
 				// ui alert
 		bind(ComplexDialogService.class).to(ViewDialog.class);
 		
+		// simple REST client  - implemented using loopj (http://loopj.com/android-async-http/)
+		bind(RemoteRestService.class).to(RestLoopjClient.class);
 	
 		install(new FactoryModuleBuilder()
 	     .implement(LocalJsonFileAsyncReaderService.class,ReadLocalJsonFile.class)
