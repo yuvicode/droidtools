@@ -9,6 +9,7 @@ import java.io.OutputStream;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 public class FileUtils {
@@ -35,22 +36,36 @@ public class FileUtils {
 	 * @return bitmap
 	 */
 	public static Bitmap decodeSampledBitmapFromFile(String imagePath,
-			int reqWidth, int reqHeight) {
-		if (imagePath == null)
+	        int reqWidth, int reqHeight) {
+		if(imagePath == null)
 			return null;
 
-		// First decode with inJustDecodeBounds=true to check dimensions
-		final BitmapFactory.Options options = new BitmapFactory.Options();
-		options.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(imagePath, options);
+	    // First decode with inJustDecodeBounds=true to check dimensions
+	    final BitmapFactory.Options options = new BitmapFactory.Options();
+	    options.inJustDecodeBounds = true;
+	    BitmapFactory.decodeFile(imagePath, options);
 
-		// Calculate inSampleSize
-		options.inSampleSize = calculateInSampleSize(options, reqWidth,
-				reqHeight);
+	    // Calculate inSampleSize
+	    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 
-		// Decode bitmap with inSampleSize set
-		options.inJustDecodeBounds = false;
-		return BitmapFactory.decodeFile(imagePath, options);
+	    // Decode bitmap with inSampleSize set
+	    options.inJustDecodeBounds = false;
+	    
+	    Bitmap decodedFile = null;
+	    
+	    try {
+			decodedFile = BitmapFactory.decodeFile(imagePath,  options);
+		} catch (OutOfMemoryError  e1) {
+			System.gc();
+			
+			try {
+				decodedFile = BitmapFactory.decodeFile(imagePath,  options);
+			} catch (OutOfMemoryError  e2) {
+				Log.d("FileUtils", e2.getMessage());
+			}
+		}
+	    
+	    return decodedFile;
 	}
 
 	/**
