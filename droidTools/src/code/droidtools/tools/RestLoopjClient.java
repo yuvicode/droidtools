@@ -62,7 +62,7 @@ public class RestLoopjClient implements RemoteRestService {
 	@Override
 	public void get(String url, final AsyncHandler<JSONObject> mClbc) {
 
-		remoteClient.get(url, createHandler(mClbc));
+		remoteClient.get(url, createLoopjHttpResHandler(mClbc));
 
 	}
 
@@ -73,7 +73,7 @@ public class RestLoopjClient implements RemoteRestService {
 		RequestParams postParams = mapToRequestParams(params);
 		remoteClient.post(mCtx, url, headers, postParams,
 				"application/x-www-form-urlencoded; charset=UTF-8 ",
-				createHandler(mClbc));
+				createLoopjHttpResHandler(mClbc));
 
 	}
 
@@ -94,7 +94,7 @@ public class RestLoopjClient implements RemoteRestService {
 		}
 
 		remoteClient.put(mCtx, url, entityToSave,
-				"application/json; charset=UTF-8", createHandler(mClbc));
+				"application/json; charset=UTF-8", createLoopjHttpResHandler(mClbc));
 
 	}
 
@@ -102,7 +102,7 @@ public class RestLoopjClient implements RemoteRestService {
 	public void delete(String url, Header[] headers,
 			final AsyncHandler<JSONObject> mClbc) {
 
-		remoteClient.delete(mCtx, url, headers, createHandler(mClbc));
+		remoteClient.delete(mCtx, url, headers, createLoopjHttpResHandler(mClbc));
 
 	}
 
@@ -120,7 +120,7 @@ public class RestLoopjClient implements RemoteRestService {
 		return params;
 	}
 
-	private AsyncHttpResponseHandler createHandler(
+	private AsyncHttpResponseHandler createLoopjHttpResHandler(
 			final AsyncHandler<JSONObject> mClbc) {
 		return new AsyncHttpResponseHandler() {
 			@Override

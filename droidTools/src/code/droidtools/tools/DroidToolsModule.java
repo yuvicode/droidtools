@@ -24,8 +24,12 @@ public class DroidToolsModule extends AbstractModule {
 	
 		// ui alert
 		bind(SimpleDialogService.class).to(YesNoDialog.class);
-				// ui alert
+		// ui alert
 		bind(ComplexDialogService.class).to(ViewDialog.class);
+		
+		// error display
+		bind(ErrorService.class).to(SimpleToastError.class);
+		
 		
 		// simple REST client  - implemented using loopj (http://loopj.com/android-async-http/)
 		bind(RemoteRestService.class).to(RestLoopjClient.class);
