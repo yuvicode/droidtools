@@ -15,6 +15,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+
+
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 
@@ -62,7 +64,7 @@ public class ReadLocalJsonFile extends AsyncTask<String, Integer, JSONObject>
 		this.fields = fields;
 
 	}
-
+	@Override
 	protected JSONObject doInBackground(String... fileName) {
 		JSONObject result = null;
 
@@ -195,10 +197,8 @@ public class ReadLocalJsonFile extends AsyncTask<String, Integer, JSONObject>
 		return result;
 	}
 
-	protected void onProgressUpdate(Integer... progress) {
 
-	}
-
+@Override
 	protected void onPostExecute(JSONObject result) {
 
 		if (error != null)

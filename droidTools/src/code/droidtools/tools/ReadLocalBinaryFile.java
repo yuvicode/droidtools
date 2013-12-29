@@ -19,7 +19,7 @@ import com.google.inject.assistedinject.AssistedInject;
  * using {@link android.os.AsyncTask}. and parse it as a JSON document use: new
  * LocalBinaryFileAsyncReaderService(handler,ctx).execut(String fileName);
  * 
- * @param {@link ByteArrayAsyncHandler} handler - the output handler
+ * @param {@link AsyncHandler} handler - the output handler
  * @param {@link Context } ctx - the activity context
  * 
  * 

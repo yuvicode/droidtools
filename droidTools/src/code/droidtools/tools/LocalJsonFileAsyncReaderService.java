@@ -10,5 +10,5 @@ public interface LocalJsonFileAsyncReaderService {
 	 * Or one single file name
 	 * 
 	 */
-	public AsyncTask<String  , Integer, JSONObject > execute(String ... args);
+	public AsyncTask<String, Integer, JSONObject> execute(String ... args);
 }
